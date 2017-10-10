@@ -5,37 +5,18 @@
   <meta charset="utf-8">
   <title>flight</title>
   <link rel="shortcut icon" href="./favicon.ico">
-
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
-    crossorigin="anonymous"></script>
-
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
-    crossorigin="anonymous">
-
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
-
-  <link href="css/heroic-features.css" rel="stylesheet">
-
-  <script src="./js/app.js"></script>
-
-  <script src="./js/header/headerController.js"></script>
-  <script src="./js/header/headerComponent.js"></script>
-
-  <script src="./js/register/registerService.js"></script>
-  <script src="./js/register/registerController.js"></script>
-  <script src="./js/register/registerComponent.js"></script>
-
-  <script src="./js/login/loginService.js"></script>
-  <script src="./js/login/loginController.js"></script>
-  <script src="./js/login/loginComponent.js"></script>
-
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script>
+    $(function () {
+      $('.dropdown-menu input').click(function (event) {
+        event.stopPropagation();
+      });
+    });
+  </script>
 </head>
 
 <body>
   <div class="fullscreen">
-    <header-component>Header goes here</header-component>
-    <ui-view class="fullScreen"></ui-view>
-    <footer-component>Footer goes here</footer-component>
     <flight-app>
       Loading...
     </flight-app>

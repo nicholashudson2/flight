@@ -45,6 +45,7 @@ const loaders = [{
 }]
 
 const plugins = [
+  
   new ExtractTextPlugin('[name].css'),
   new HtmlWebpackPlugin({
     hash: true,

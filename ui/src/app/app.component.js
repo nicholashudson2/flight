@@ -1,3 +1,5 @@
+import '../style.css'
+import 'bootstrap'
 import templateUrl from './app.component.html'
 
 /* @ngInject */
