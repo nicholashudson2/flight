@@ -1,0 +1,40 @@
+package com.cooksys.dto;
+
+import com.cooksys.entity.Credentials;
+import com.cooksys.entity.Profile;
+
+public class ClientDto {
+
+	private Credentials credentials;
+	
+	private Profile profile;
+	
+	/**
+	 * @return the credentials
+	 */
+	public Credentials getCredentials() {
+		return credentials;
+	}
+
+	/**
+	 * @param credentials the credentials to set
+	 */
+	public void setCredentials(Credentials credentials) {
+		this.credentials = credentials;
+	}
+
+	/**
+	 * @return the profile
+	 */
+	public Profile getProfile() {
+		return profile;
+	}
+
+	/**
+	 * @param profile the profile to set
+	 */
+	public void setProfile(Profile profile) {
+		this.profile = profile;
+	}
+
+}

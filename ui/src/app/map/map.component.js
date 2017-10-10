@@ -11,8 +11,8 @@ class MapController {
     this.$map = $map
 
     // add markers from an angular constant
-    const { memphis, nashville, knoxville } = locations
-    const markers = [memphis, nashville, knoxville]
+    const { memphis, nashville, knoxville, chattanooga } = locations
+    const markers = [memphis, nashville, knoxville, chattanooga]
 
     markers.forEach(marker => this.addMarker(marker))
 

@@ -9,21 +9,21 @@ import com.cooksys.entity.Location;
 import com.cooksys.repository.LocationRepository;
 
 @Service
-public class LocationService {
+public class ClientService {
 	
 	@Autowired
-	LocationRepository repo;
+	ClientRepository clientRepo;
 		
 	public List<Location> getAll()
 	{
-		return repo.findAll();
+		return clientRepo.findAll();
 	}
 
 	public Location get(long id) {
-		return repo.findById(id);
+		return clientRepo.findById(id);
 	}
 	
 	public Location get(String name) {
-		return repo.findByCity(name);
+		return clientRepo.findByCity(name);
 	}
 }

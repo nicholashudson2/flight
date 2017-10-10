@@ -1,6 +1,17 @@
 package com.cooksys.pojo;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
 public class Flight {
+	
+	@Id
+	@GeneratedValue
+	@Column(name = "flight_id")
+	private long id;
 	
 	//Name of city where flight originates
 	private String origin;
@@ -12,7 +23,7 @@ public class Flight {
 	private long flightTime;
 	
 	//How many hours after the start of the day until the flight takes off
-	private long offset;
+	private long offsetFromStart;
 	
 	public String getOrigin() {
 		return origin;
@@ -32,20 +43,21 @@ public class Flight {
 	public void setFlightTime(long flightTime) {
 		this.flightTime = flightTime;
 	}
-	public long getOffset() {
-		return offset;
+	public long getOffsetFromStart() {
+		return offsetFromStart;
 	}
-	public void setOffset(long offset) {
-		this.offset = offset;
+	public void setOffsetFromStart(long offset) {
+		this.offsetFromStart = offset;
 	}
 	public Flight(String origin, String destination, long flightTime, long offset) {
 		super();
 		this.origin = origin;
 		this.destination = destination;
 		this.flightTime = flightTime;
-		this.offset = offset;
+		this.offsetFromStart = offset;
+	}
+	public Flight() {
+		super();
 	}
 	
-	
-
 }

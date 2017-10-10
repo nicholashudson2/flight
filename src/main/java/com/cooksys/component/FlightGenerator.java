@@ -28,7 +28,7 @@ public class FlightGenerator {
 			String destination = Cities.values()[destinationIndex].getName();
 			int flightTime = ThreadLocalRandom.current().nextInt(1, 4);
 			int offset = ThreadLocalRandom.current().nextInt(0, 10);
-
+			
 			Flight f = new Flight(origin, destination, flightTime, offset);
 
 			result.add(f);
