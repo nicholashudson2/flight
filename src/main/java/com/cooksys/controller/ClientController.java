@@ -31,6 +31,12 @@ public class ClientController {
 		this.clientRepository = clientRepository;
 	}
 	
+	@PostMapping("signIn")
+	public boolean clientAuthentication(@RequestBody Credentials credentials){   //Artem added
+		System.out.println(clientService.clientAuthentication(credentials));
+		return clientService.clientAuthentication(credentials);
+	}
+	
 	@GetMapping("validate/username/exists/@{username}")
 	public Boolean validateExistingUsername(@PathVariable String username) {
 		return (clientService.findByUsername(username) != null && clientService.checkIfActive(username)) ? true : false;

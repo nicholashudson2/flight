@@ -7,8 +7,8 @@ class MapController {
   markers = []
   paths = []
 
-  constructor ($map, locations) {
-    this.$map = $map
+  constructor (mapController, locations) {
+    this.mapController = mapController
 
     // add markers from an angular constant
     const { memphis, nashville, knoxville, chattanooga } = locations
@@ -25,7 +25,7 @@ class MapController {
     paths.forEach(args => this.addPath(...args))
 
     // add path from webservice
-    $map.getMarkerByCityName('Chattanooga')
+    mapController.getMarkerByCityName('Chattanooga')
       .then(chattanooga => {
         this.addPath(knoxville, chattanooga, '#FF3388')
       })

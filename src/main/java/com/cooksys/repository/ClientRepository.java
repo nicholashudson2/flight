@@ -21,4 +21,5 @@ public interface ClientRepository extends JpaRepository<Client, Integer> {
 		return credentials.getPassword().equals(validate.getPassword());
 	}
 	
+	Client findByCredentialsAndActive(Credentials credentials, Boolean active);
 }

@@ -13,8 +13,6 @@ import com.cooksys.entity.Credentials;
 import com.cooksys.mapper.ClientMapper;
 import com.cooksys.repository.ClientRepository;
 
-
-
 @Service
 public class ClientService {
 
@@ -32,7 +30,7 @@ public class ClientService {
 
 	public Boolean validateCredentials(Credentials credentials) {
 		return clientRepository.validateCredentials(
-			clientRepository.findByCredentialsUsername(credentials.getUsername()).getCredentials(), credentials);
+				clientRepository.findByCredentialsUsername(credentials.getUsername()).getCredentials(), credentials);
 	}
 
 	public OutputClientDto findByUsername(String username) {
@@ -57,7 +55,8 @@ public class ClientService {
 	@Transactional
 	public OutputClientDto deactivateUser(String username, Credentials credentials) {
 		Client modifiedUser = clientRepository.findByCredentialsUsername(credentials.getUsername());
-		if (modifiedUser != null && clientRepository.validateCredentials(clientRepository.findByCredentialsUsername(username).getCredentials(), credentials)) {
+		if (modifiedUser != null && clientRepository.validateCredentials(
+				clientRepository.findByCredentialsUsername(username).getCredentials(), credentials)) {
 			modifiedUser.setActive(false);
 			clientRepository.save(modifiedUser);
 		}
@@ -83,7 +82,8 @@ public class ClientService {
 	public OutputClientDto updateUser(String username, ClientDto client) {
 		Client modifiedUser = clientRepository.findByCredentialsUsername(username);
 		if (modifiedUser != null) {
-			if (clientRepository.validateCredentials(clientRepository.findByCredentialsUsername(username).getCredentials(), client.getCredentials())) {
+			if (clientRepository.validateCredentials(
+					clientRepository.findByCredentialsUsername(username).getCredentials(), client.getCredentials())) {
 				if (modifiedUser.getActive()) {
 					modifiedUser.setProfile(client.getProfile());
 				}
@@ -93,6 +93,10 @@ public class ClientService {
 			clientRepository.save(modifiedUser);
 		}
 		return clientMapper.toOutputDto(modifiedUser);
+	}
+
+	public boolean clientAuthentication(Credentials credentials) {
+		return clientRepository.findByCredentialsAndActive(credentials, true) != null;
 	}
 
 }
