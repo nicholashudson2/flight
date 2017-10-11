@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -13,14 +14,15 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cooksys.repository.ClientRepository;
-import com.cooksys.service.ClientService;
 import com.cooksys.dto.ClientDto;
 import com.cooksys.dto.OutputClientDto;
 import com.cooksys.entity.Credentials;
+import com.cooksys.repository.ClientRepository;
+import com.cooksys.service.ClientService;
 
 @RestController
 @RequestMapping("client")
+@CrossOrigin
 public class ClientController {
 	
 	ClientService clientService;
@@ -31,7 +33,7 @@ public class ClientController {
 		this.clientRepository = clientRepository;
 	}
 	
-	@PostMapping("signIn")
+	@PostMapping("login")
 	public boolean clientAuthentication(@RequestBody Credentials credentials){   //Artem added
 		System.out.println(clientService.clientAuthentication(credentials));
 		return clientService.clientAuthentication(credentials);
@@ -47,31 +49,31 @@ public class ClientController {
 		return (clientService.findByUsername(username) != null) ? false : true;
 	}
 	
-	@GetMapping("users")
+	@GetMapping
 	public List<OutputClientDto> users() {
 		return clientService.getActiveUsers();
 	}
 
 
-	@PostMapping("users")
+	@PostMapping
 	public OutputClientDto createClient(@RequestBody ClientDto client) {
 		clientService.create(client);
 		return clientService.findByUsername(client.getCredentials().getUsername());
 	}
 
-	@GetMapping("users/@{username}")
+	@GetMapping("@{username}")
 	public OutputClientDto findByUsername(@PathVariable String username, HttpServletResponse response) {
 		return clientService.findByUsername(username);
 	}
 
-	@PatchMapping("users/@{username}")
+	@PatchMapping("@{username}")
 	public OutputClientDto updateUser(@PathVariable String username, @RequestBody ClientDto person, HttpServletResponse response) {
 		if (!validateExistingUsername(username) || !clientService.validateCredentials(person.getCredentials()))
 			response.setStatus(HttpServletResponse.SC_NOT_MODIFIED);
 		return clientService.updateUser(username, person);
 	}
 
-	@DeleteMapping("users/@{username}")
+	@DeleteMapping("@{username}")
 	public OutputClientDto deleteByUsername(@PathVariable String username, @RequestBody Credentials credentials, HttpServletResponse response) {
 		if (!validateExistingUsername(username) || !clientService.validateCredentials(credentials))
 			response.setStatus(HttpServletResponse.SC_METHOD_NOT_ALLOWED);

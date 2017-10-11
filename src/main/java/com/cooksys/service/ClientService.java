@@ -96,7 +96,9 @@ public class ClientService {
 	}
 
 	public boolean clientAuthentication(Credentials credentials) {
-		return clientRepository.findByCredentialsAndActive(credentials, true) != null;
+		Client user = clientRepository.findByCredentialsUsername(credentials.getUsername());
+		return (user != null && validateCredentials(credentials));
+		 
 	}
 
 }

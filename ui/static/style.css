@@ -1,0 +1,119 @@
+body {
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    background-color: black;
+}
+
+.container {
+    width: 100vw;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+}
+
+.fullscreen {
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.header {
+    width: 100%;
+    height: 52px;
+    margin: 0;
+    padding: 0;
+    z-index: 10;
+    position: fixed;
+    top: 0;
+}
+
+.header > .navbar {
+    border-radius: 0;
+}
+
+.body {
+    padding-top: 52px;
+}
+
+.map {
+    height: 500px;
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+}
+
+ng-map {
+    height: 100%;
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar {
+    width: 100vw;
+    padding: 0;
+    margin: 0;
+}
+
+#login-dp, #search-dp {
+    padding: 10%;
+    width: 400px;
+    align-items: center;
+    justify-content: center;
+}
+
+.registration-content {
+    width: 100%;
+    height: 100%;
+    justify-content: space-between;
+    align-items: space-around;
+}
+
+.modal-content {
+    padding: 10px;
+    margin: 10px;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-group {
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+.navbar-form {
+    margin: 0;
+}
+
+.reg-btn-row {
+    width: 100%;
+    display: inline-block;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.reg-panel-btn {
+    display: block;
+    height: 100%;
+    flex: 1;
+    margin: 0;
+    margin-bottom: 10px;
+}
+
+.flight-panel {
+    display: flex;
+    align-items: space-between;
+    flex-wrap: wrap;
+}
+
+.flight {
+    flex: 1 1 auto;
+    margin: 1vh;
+}

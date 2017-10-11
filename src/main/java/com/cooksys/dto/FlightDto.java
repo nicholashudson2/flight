@@ -3,6 +3,8 @@ package com.cooksys.dto;
 
 public class FlightDto {
 	
+	private long id;
+	
 	private String origin;
 	
 	private String destination;
@@ -10,6 +12,8 @@ public class FlightDto {
 	private long flightTime;
 	
 	private long offsetFromStart;
+	
+	private long arrival;
 	
 	public String getOrigin() {
 		return origin;
@@ -41,6 +45,22 @@ public class FlightDto {
 	
 	public void setOffsetFromStart(long offset) {
 		this.offsetFromStart = offset;
+	}
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public long getArrival() {
+		return arrival;
+	}
+
+	public void setArrival(long arrival) {
+		this.arrival = arrival;
 	}
 
 }

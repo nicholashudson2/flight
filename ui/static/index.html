@@ -6,20 +6,12 @@
   <title>flight</title>
   <link rel="shortcut icon" href="./favicon.ico">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script>
-    $(function () {
-      $('.dropdown-menu input').click(function (event) {
-        event.stopPropagation();
-      });
-    });
-  </script>
 </head>
 
 <body>
   <div class="fullscreen">
-    <flight-app>
-      Loading...
-    </flight-app>
+    <div class="container">
+      <ui-view></ui-view>
   </div>
 </body>
 

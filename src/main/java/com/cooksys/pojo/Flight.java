@@ -25,6 +25,8 @@ public class Flight {
 	//How many hours after the start of the day until the flight takes off
 	private long offsetFromStart;
 	
+	private long arrival;
+	
 	public String getOrigin() {
 		return origin;
 	}
@@ -49,12 +51,19 @@ public class Flight {
 	public void setOffsetFromStart(long offset) {
 		this.offsetFromStart = offset;
 	}
-	public Flight(String origin, String destination, long flightTime, long offset) {
+	public long getArival() {
+		return arrival;
+	}
+	public void setArrival(long arrival) {
+		this.arrival = arrival;
+	}
+	public Flight(String origin, String destination, long flightTime, long offsetFromStart) {
 		super();
 		this.origin = origin;
 		this.destination = destination;
 		this.flightTime = flightTime;
-		this.offsetFromStart = offset;
+		this.offsetFromStart = offsetFromStart;
+		this.arrival = offsetFromStart + flightTime;
 	}
 	public Flight() {
 		super();

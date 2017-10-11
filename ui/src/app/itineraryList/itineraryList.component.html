@@ -1,0 +1,16 @@
+<div class="itinerary-list" ng-repeat="itinerary in $ctrl.itineraryList">
+    <div class="list-group row flight-panel">
+        <div class="card text-center flight" ng-repeat="flight in itinerary">
+            <div class="card-block">
+                <h6 class="card-subtitle mb-2 text-muted">Origin: {{ flight.origin }}</h6>
+                <p class="card-text">Departs: {{ flight.offsetFromStart }}</p>
+                <h6 class="card-subtitle mb-2 text-muted">Destination: {{ flight.destination }}</h6>
+                <p class="card-text">Arrives: {{ flight.arrival }}</p>
+                <h4 class="card-subtitle mb-2 text-muted">Duration (hours): {{ flight.flightTime }}</h4>
+            </div>
+        </div>
+    </div>
+    <div class="bttns">
+        <button class="btn btn-block btn-primary" role="button" ng-click="$ctrl.repost($ctrl.tweet.id)">Book This Flight</button>
+    </div>
+</div>
