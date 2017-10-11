@@ -1,22 +1,18 @@
 /* @ngInject */
 class FlightListController {
-    // credentials = {
-    //     username: '',
-    //     password: ''
-    // }
 
     flightList = []
 
-    constructor(flightListService) {
+    constructor(flightListService, $map) {
         this.flightListService = flightListService
-
+        this.$map = $map
+        
         this.getAllFlights()
     }
 
     getAllFlights = () => {
         this.flightListService.getDailyFlights().then((result) => {
             this.flightList = result.data
-            console.dir(this.flightList)
         })
     }
 
@@ -26,19 +22,10 @@ class FlightListController {
         })
     }
 
-    // userLogin = () => {
-    //     this.loginService.authenticateUser(this.credentials).then((result) => {
-    //         if (result.data) {
-    //             // sessionStorage.setItem('userLogin', this.credentials.userLogin);
-    //             // sessionStorage.setItem('password', this.credentials.password);
-    //         } else {
-    //             this.myStyle = { display: 'block', opacity: 0.5, "margin-bottom": '8%' }
-    //         }
-
-    //     }, (error) => {
-    //         alert('Login failed. Try again.')
-    //     })
-    // }
+    showFlightsMap(itinerary) {
+        this.$map.flights = flightList
+        this.$state.go('index.map')
+    }
 
 }
 

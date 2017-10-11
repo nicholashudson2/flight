@@ -1,25 +1,24 @@
-<div class="itinerary-list" ng-repeat="itinerary in $ctrl.itineraryList">
+<div class="history-list" ng-repeat="itinerary in $ctrl.historyList">
     <div class="list-group row flight-panel">
         <div class="card text-center flight" ng-repeat="flight in itinerary">
             <div class="card-block">
                 <h6 class="card-subtitle mb-2 text-muted">Origin: {{ flight.origin }}</h6>
-                <p class="card-text">Departs: {{ flight.offsetFromStart }}</p>
+                <p class="card-text">Departure: {{ flight.offsetFromStart }}</p>
                 <h6 class="card-subtitle mb-2 text-muted">Destination: {{ flight.destination }}</h6>
-                <p class="card-text">Arrives: {{ flight.arrival }}</p>
+                <p class="card-text">Arrival: {{ flight.arrival }}</p>
                 <h4 class="card-subtitle mb-2 text-muted">Duration (hours): {{ flight.flightTime }}</h4>
             </div>
         </div>
     </div>
     <div class="bttns">
-        <button class="btn btn-block btn-primary" role="button" ng-click="$ctrl.repost($ctrl.tweet.id)">Book This Flight</button>
-        <button class="btn btn-block btn-primary" role="button" data-toggle="modal" data-target="#mapModal" ng-click="$ctrl.showItineraryMap(itinerary)">View On Map</button>
+        <button class="btn btn-block btn-primary" role="button" data-toggle="modal" data-target="#mapModal" ng-click="$ctrl.showHistoryMap(itinerary)">View On Map</button>
     </div>
 </div>
 
 <div class="modal fade" id="mapModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
-            <ui-view ng-style="{'flex':'1 1 auto', 'height':'100%', 'width':'58vw'}"></ui-view>
+            <ui-view ng-style="{'height':'100%', 'width':'58vw'}"></ui-view>
         </div>
     </div>
 </div>

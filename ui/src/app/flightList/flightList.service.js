@@ -5,7 +5,6 @@ class FlightListService {
         this.apiUrl = apiUrl
     }
 
-
     getDailyFlights = () => {
         return this.$http.get(`${this.apiUrl}/flights`)
     }

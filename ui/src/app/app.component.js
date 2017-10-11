@@ -7,9 +7,10 @@ class AppController {
   origin = ''
   destination = ''
 
-  constructor($log, $state, itineraryListService) {
+  constructor($log, $state, itineraryListService, $map) {
     this.itineraryListService = itineraryListService
     this.$state = $state
+    this.$map = $map
     $log.debug('AppController is a go.')
   }
 
@@ -23,6 +24,16 @@ class AppController {
     }
   }
 
+  viewItineraryMap() {
+    this.$map.flights = this.flights
+    console.dir(this.itineraryListService.flights)
+    if (!this.$state.is('index.itineraryList.map')) {
+      this.$state.go('index.itineraryList.map')
+    } else {
+      this.$state.reload()
+    }
+  }
+
 }
 
 export default {
@@ -31,6 +42,7 @@ export default {
   controllerAs: '$appCtrl',
   bindings: {
     origin: '=',
-    destination: '='
+    destination: '=',
+    flights: '='
   }
 }

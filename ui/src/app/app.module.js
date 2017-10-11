@@ -5,6 +5,7 @@ import flightMap from './map/map.module'
 import flightList from './flightList/flightList.module'
 import userLogin from './login/login.module'
 import itineraryList from './itineraryList/itineraryList.module'
+import historyList from './historyList/historyList.module'
 import userRegistration from './register/register.module'
 import apiUrl from './api.url'
 import appComponent from './app.component.js'
@@ -52,11 +53,32 @@ export default
         component: 'flightMap'
       }
 
+      const itineraryListMapState = {
+        name: 'index.itineraryList.map',
+        url: '/map',
+        component: 'flightMap'
+      }
+
+      const historyListState = {
+        name: 'index.historyList',
+        url: '/historyList',
+        component: 'historyListComponent'
+      }
+
+      const historyListMapState = {
+        name: 'index.historyList.map',
+        url: '/map',
+        component: 'flightMap'
+      }
+
       $stateProvider.state(mainPageState)
       .state(mapState)
       .state(flightListState)
       .state(itineraryListState)
-
+      .state(itineraryListMapState)
+      .state(historyListState)
+      .state(historyListMapState)
+      
       $urlRouterProvider.otherwise('/index/flightList')
     } 
   ])
