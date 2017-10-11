@@ -109,11 +109,13 @@ ng-map {
 
 .flight-panel {
     display: flex;
-    align-items: space-between;
+    align-items: space-around;
     flex-wrap: wrap;
+    margin: 1vw;
 }
 
 .flight {
     flex: 1 1 auto;
     margin: 1vh;
+    border: 3px solid RED;
 }
