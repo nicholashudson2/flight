@@ -11,4 +11,6 @@ import com.cooksys.entity.Itinerary;
 public interface ItineraryRepository extends JpaRepository<Itinerary, Integer> {
 
 	List<Itinerary> findAllByClientCredentialsUsername(String username);
+
+	Itinerary findById(long id);
 }

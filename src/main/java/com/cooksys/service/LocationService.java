@@ -24,6 +24,8 @@ public class LocationService {
 	}
 	
 	public Location get(String name) {
-		return repo.findByCity(name);
+		String output = name.substring(0, 1).toUpperCase() + name.substring(1).toLowerCase();
+		System.out.println(output);
+		return repo.findByCity(output);
 	}
 }
