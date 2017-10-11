@@ -1,19 +1,19 @@
 /* @ngInject */
 class ItineraryListController {
-    // credentials = {
-    //     username: '',
-    //     password: ''
-    // }
 
     itineraryList = []
 
-    constructor(itineraryListService) {
+    constructor(itineraryListService, $state) {
         this.itineraryListService = itineraryListService
+        this.$state = $state
+
+        this.findItineraries()
     }
 
     findItineraries() {
-        this.itineraryListService.findItineraries(this.origin, this.destination).then((result) => {
+        this.itineraryListService.findItineraries().then((result) => {
             this.itineraryList = result.data
+            console.dir(this.itineraryList)
         })
     }
 

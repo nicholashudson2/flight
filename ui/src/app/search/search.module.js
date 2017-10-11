@@ -33,7 +33,7 @@ export default
       'ui.router',
 
       flightMap
-    ]).config([ , ())]
+    ])
 
     .constant('apiUrl', apiUrl)
     .component('flightApp', appComponent)

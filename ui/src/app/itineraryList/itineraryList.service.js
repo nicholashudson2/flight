@@ -1,12 +1,17 @@
 /* @ngInject */
 class ItineraryListService {
-    constructor($http, apiUrl) {
+
+    origin = ''
+    destination = ''
+
+    constructor($http, $state, apiUrl) {
         this.$http = $http
         this.apiUrl = apiUrl
+        this.$state = $state
     }
 
-    findItineraries = (origin, destination) => {
-        return this.$http.get(`${this.apiUrl}/flights/from/@${origin}/to/@${destination}`)
+    findItineraries = () => {
+        return this.$http.get(`${this.apiUrl}/flights/from/@${this.origin}/to/@${this.destination}`)
     }
 
 }

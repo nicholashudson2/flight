@@ -41,10 +41,9 @@ export default
       }
 
       const itineraryListState = {
-        abstract: true,
         name: 'index.itineraryList',
         url: '/itineraryList',
-        component: 'itineraryList'
+        component: 'itineraryListComponent'
       }
 
       const mapState = {

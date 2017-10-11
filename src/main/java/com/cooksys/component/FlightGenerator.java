@@ -30,7 +30,7 @@ public class FlightGenerator {
 			int offset = ThreadLocalRandom.current().nextInt(0, 10);
 			
 			Flight f = new Flight(origin, destination, flightTime, offset);
-
+			
 			result.add(f);
 		}
 		return result;

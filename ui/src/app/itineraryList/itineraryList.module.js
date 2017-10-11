@@ -5,7 +5,7 @@ import itineraryListController from './itineraryList.controller'
 export default
   angular
     .module('itineraryList', [])
-    .component('itineraryList', itineraryListComponent)
+    .component('itineraryListComponent', itineraryListComponent)
     .controller('itineraryListController', itineraryListController)
     .service('itineraryListService', itineraryListService)
     .name
