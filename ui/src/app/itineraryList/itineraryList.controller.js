@@ -21,6 +21,10 @@ class ItineraryListController {
         this.$state.go('index.itineraryList.map')
     }
 
+    bookTrip(itinerary) {
+        this.itineraryListService.bookTrip(itinerary)
+    }
+
 }
 
 export default ItineraryListController
