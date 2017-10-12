@@ -36,7 +36,7 @@ public class ItineraryService {
 
 	@Transactional
 	public ItineraryDto create(InputItineraryDto itinerary) {
-		Itinerary modifiedItinerary = itineraryMapper.fromDto(itinerary);
+		Itinerary modifiedItinerary = itineraryMapper.fromInputDto(itinerary);
 		modifiedItinerary.setClient(clientRepo.findByCredentialsUsername(itinerary.getCredentials().getUsername()));
 		return itineraryMapper.toDto(itineraryRepo.save(modifiedItinerary));
 		

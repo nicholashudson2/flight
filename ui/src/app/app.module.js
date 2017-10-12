@@ -48,8 +48,8 @@ export default
         component: 'itineraryListComponent'
       }
 
-      const mapState = {
-        name: 'index.map',
+      const allFlightsMapState = {
+        name: 'index.flightList.map',
         url: '/map',
         component: 'flightMap'
       }
@@ -73,7 +73,7 @@ export default
       }
 
       $stateProvider.state(mainPageState)
-      .state(mapState)
+      .state(allFlightsMapState)
       .state(flightListState)
       .state(itineraryListState)
       .state(itineraryListMapState)

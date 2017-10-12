@@ -1,6 +1,7 @@
 package com.cooksys.entity;
 
 import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Embedded;
@@ -95,6 +96,43 @@ public class Client {
 	 */
 	public void setCredentials(Credentials credentials) {
 		this.credentials = credentials;
+	}
+	
+	public Client() {
+		super();
+	}
+
+	public Client(Date today, long id, boolean active, Profile profile, Credentials credentials,
+			List<Itinerary> itineraries) {
+		super();
+		this.today = today;
+		this.id = id;
+		this.active = active;
+		this.profile = profile;
+		this.credentials = credentials;
+		this.itineraries = itineraries;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + (int) (id ^ (id >>> 32));
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Client other = (Client) obj;
+		if (id != other.id)
+			return false;
+		return true;
 	}
 
 }

@@ -9,7 +9,7 @@ class HistoryListService {
     }
 
     findHistory = () => {
-        return this.$http.get(`${this.apiUrl}/flights/from/@${this.origin}/to/@${this.destination}`)
+        return this.$http.get(`${this.apiUrl}/itinerary/from/@${sessionStorage.getItem('userLogin')}`)
     }
 
 }

@@ -2,6 +2,7 @@ package com.cooksys.entity;
 
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,7 +15,8 @@ import javax.persistence.ManyToOne;
 public class Itinerary {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="itinerary_id")
 	private long id;
 	@ElementCollection
 	private List<String> flightOrigins;
@@ -32,6 +34,10 @@ public class Itinerary {
 
 	public long getId() {
 		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
 	}
 
 	public List<String> getFlightOrigins() {
@@ -82,9 +88,11 @@ public class Itinerary {
 		this.client = client;
 	}
 
-	public Itinerary(List<String> flightOrigins, List<String> flightDestinations, List<Long> flightDurations,
+
+	public Itinerary(long id, List<String> flightOrigins, List<String> flightDestinations, List<Long> flightDurations,
 			List<Long> flightOffsets, List<Long> flightArrivalTimes, Client client) {
 		super();
+		this.id = id;
 		this.flightOrigins = flightOrigins;
 		this.flightDestinations = flightDestinations;
 		this.flightDurations = flightDurations;

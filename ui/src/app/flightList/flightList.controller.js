@@ -13,6 +13,7 @@ class FlightListController {
 
     getAllFlights = () => {
         this.flightListService.getDailyFlights().then((result) => {
+            this.flightList = result.data
             this.showFlightsMap(result.data)
         })
     }
@@ -25,7 +26,7 @@ class FlightListController {
 
     showFlightsMap(flights) {
         this.$map.flights = flights
-        this.$state.go('index.map')
+        this.$state.go('index.flightList')
     }
 
 }

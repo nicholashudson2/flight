@@ -40,6 +40,13 @@ body {
     padding-top: 52px;
 }
 
+ng-map {
+    height: 100%;
+    width: 59vw;
+    margin: 0;
+    padding: 0;
+}
+
 .map {
     height: 500px;
     width: 100vw;
@@ -47,12 +54,6 @@ body {
     padding: 0;
 }
 
-ng-map {
-    height: 100%;
-    width: 59vw;
-    margin: 0;
-    padding: 0;
-}
 
 .navbar {
     width: 100vw;
