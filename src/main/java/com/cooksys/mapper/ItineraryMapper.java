@@ -5,14 +5,15 @@ import java.util.List;
 import org.mapstruct.Mapper;
 
 import com.cooksys.entity.Itinerary;
+import com.cooksys.dto.InputItineraryDto;
 import com.cooksys.dto.ItineraryDto;
 
 @Mapper(componentModel="spring")
 public interface ItineraryMapper {
 
-	Itinerary fromDto(ItineraryDto dto);
+	Itinerary fromDto(InputItineraryDto dto);
 	
-	List<Itinerary> fromDtos(List<ItineraryDto> dtos);
+	List<Itinerary> fromDtos(List<InputItineraryDto> dtos);
 	
 	ItineraryDto toDto(Itinerary itinerary);
 	

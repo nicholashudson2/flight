@@ -3,16 +3,17 @@ class FlightListController {
 
     flightList = []
 
-    constructor(flightListService, $map) {
+    constructor(flightListService, $map, $state) {
         this.flightListService = flightListService
         this.$map = $map
+        this.$state = $state
         
         this.getAllFlights()
     }
 
     getAllFlights = () => {
         this.flightListService.getDailyFlights().then((result) => {
-            this.flightList = result.data
+            this.showFlightsMap(result.data)
         })
     }
 
@@ -22,8 +23,8 @@ class FlightListController {
         })
     }
 
-    showFlightsMap(itinerary) {
-        this.$map.flights = flightList
+    showFlightsMap(flights) {
+        this.$map.flights = flights
         this.$state.go('index.map')
     }
 

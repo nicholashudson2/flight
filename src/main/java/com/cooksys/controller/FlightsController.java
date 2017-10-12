@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cooksys.dto.FlightDto;
+import com.cooksys.pojo.Flight;
 import com.cooksys.service.FlightService;
 import com.cooksys.service.LocationService;
 
@@ -25,17 +25,17 @@ public class FlightsController {
 	FlightService flightService;
 	
 	@RequestMapping
-	public List<FlightDto> getFlightList() {
+	public List<Flight> getFlightList() {
 		return flightService.getDailyFlightList();
 	}
 	
 	@GetMapping("/from/@{origin}/to/@{destination}")
-	public List<List<FlightDto>> getAllRoutesByOriginAndDestination(@PathVariable String origin, @PathVariable String destination) {
+	public List<List<Flight>> getAllRoutesByOriginAndDestination(@PathVariable String origin, @PathVariable String destination) {
 		return flightService.getAllRoutes(origin.toUpperCase(), destination.toUpperCase());
 	}
 	
 	@GetMapping("/direct_from/@{origin}/to/@{destination}")
-	public List<FlightDto> getDirectRoutesByOriginAndDestination(@PathVariable String origin, @PathVariable String destination) {
+	public List<Flight> getDirectRoutesByOriginAndDestination(@PathVariable String origin, @PathVariable String destination) {
 		return flightService.getAllDirectFlights(origin.toUpperCase(), destination.toUpperCase());
 	}
 

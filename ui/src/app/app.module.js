@@ -24,7 +24,8 @@ export default
       userLogin,
       userRegistration,
       flightList,
-      itineraryList
+      itineraryList,
+      historyList
     ]).config(['$stateProvider', '$urlRouterProvider', 
     function($stateProvider, $urlRouterProvider) {
 

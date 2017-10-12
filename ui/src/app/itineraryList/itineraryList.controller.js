@@ -9,8 +9,8 @@ class ItineraryListController {
         this.findItineraries()
     }
 
-    findItinerary() {
-        this.itineraryListService.findItinerary().then((result) => {
+    findItineraries() {
+        this.itineraryListService.findItineraries().then((result) => {
             this.itineraryList = result.data
             console.dir(this.itineraryList)
         })

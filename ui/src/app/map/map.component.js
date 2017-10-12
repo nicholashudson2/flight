@@ -2,14 +2,19 @@ import templateUrl from './map.component.html'
 
 /* @ngInject */
 class MapController {
+
   zoom = 7
   center = [35.5175, -86.5804]
   markers = []
   paths = []
 
+  
 
-  constructor($map, locations) {
+
+  constructor($map, locations, $scope) {
     this.$map = $map
+    $scope.googleMapsUrl="https://maps.googleapis.com/maps/api/js?key=AIzaSyBNK71s8scIoYbDQqw0DS1oWjfZaX-l3dY"
+    // window.initMap = initMap;
 
     // add markers from an angular constant
     // const { chattanooga, knoxville, memphis, nashville } = locations
@@ -75,9 +80,11 @@ class MapController {
     })
   }
 
-  getColor(a, b) {
-
-    var color = ''
+  getColor(origin, destination) {
+    let a = origin.toLowerCase()
+    let b = destination.toLowerCase()
+    
+    let color = '#00FF00'
 
     switch (a) {
       case 'chattanooga':
@@ -131,7 +138,7 @@ class MapController {
       case 'nashville':
         switch (b) {
           case 'chattanooga':
-            this.color = '#FABEBE';
+            this.color = '#F6BBEB';
             break;
           case 'knoxville':
             this.color = '#008080';
@@ -145,10 +152,13 @@ class MapController {
         }
         break;
     }
-    return this.color.toString();
+    return this.color;
   }
+  
 
 }
+
+
 
 export default {
   templateUrl,

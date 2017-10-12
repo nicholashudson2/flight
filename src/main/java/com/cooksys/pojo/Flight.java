@@ -1,22 +1,6 @@
 package com.cooksys.pojo;
 
-import java.util.List;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-
-import com.cooksys.entity.Itinerary;
-
-@Entity
 public class Flight {
-	
-	@Id
-	@GeneratedValue
-	@Column(name = "flight_id")
-	private long id;
 	
 	//Name of city where flight originates
 	private String origin;
@@ -31,9 +15,6 @@ public class Flight {
 	private long offsetFromStart;
 	
 	private long arrival;
-	
-	@ManyToMany(mappedBy="flights")
-	private List<Itinerary> itineraries;
 	
 	public String getOrigin() {
 		return origin;
@@ -64,12 +45,6 @@ public class Flight {
 	}
 	public void setArrival(long arrival) {
 		this.arrival = arrival;
-	}
-	public List<Itinerary> getItineraries() {
-		return itineraries;
-	}
-	public void setItineraries(List<Itinerary> itineraries) {
-		this.itineraries = itineraries;
 	}
 	public Flight(String origin, String destination, long flightTime, long offsetFromStart) {
 		super();

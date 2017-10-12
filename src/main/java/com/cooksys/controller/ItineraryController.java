@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.cooksys.dto.InputItineraryDto;
 import com.cooksys.dto.ItineraryDto;
 import com.cooksys.entity.Credentials;
 import com.cooksys.repository.ItineraryRepository;
@@ -33,7 +34,7 @@ public class ItineraryController {
 	}
 	
 	@PostMapping
-	public ItineraryDto create(@RequestBody ItineraryDto itinerary) {
+	public ItineraryDto create(@RequestBody InputItineraryDto itinerary) {
 		itineraryService.create(itinerary);
 		return itineraryService.findById(itinerary.getId());
 	}

@@ -8,8 +8,6 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import com.cooksys.component.FlightGenerator;
-import com.cooksys.dto.FlightDto;
-import com.cooksys.mapper.FlightMapper;
 import com.cooksys.pojo.Flight;
 
 @Service
@@ -18,13 +16,10 @@ public class FlightService {
 	@Autowired
 	FlightGenerator generator;
 	
-	@Autowired
-	FlightMapper flightMapper;
-
 	private ArrayList<Flight> flightList = new ArrayList<>();
 	
-	public List<FlightDto> getDailyFlightList() {
-		return flightMapper.toFlightDtos(flightList);
+	public List<Flight> getDailyFlightList() {
+		return flightList;
 	}
 	
 	//The fixedDelay parameter determines how often a new day is generated as expressed in milliseconds
@@ -33,9 +28,9 @@ public class FlightService {
 		flightList = generator.generateNewFlightList();
 	}
 	
-	public List<FlightDto> getAllDirectFlights(String origin, String destination) {
-		List<FlightDto> directFlights = new ArrayList<>();
-		for (FlightDto f : getDailyFlightList()) {
+	public List<Flight> getAllDirectFlights(String origin, String destination) {
+		List<Flight> directFlights = new ArrayList<>();
+		for (Flight f : getDailyFlightList()) {
 			if (f.getOrigin().equals(origin) && f.getDestination().equals(destination)) {
 				directFlights.add(f);
 			}
@@ -43,9 +38,9 @@ public class FlightService {
 		return directFlights;
 	}
 	
-	public List<FlightDto> getIndirectFlightsByDestination(String destination) {
-		List<FlightDto> flights = new ArrayList<>();
-		for(FlightDto f : getDailyFlightList()) {
+	public List<Flight> getIndirectFlightsByDestination(String destination) {
+		List<Flight> flights = new ArrayList<>();
+		for(Flight f : getDailyFlightList()) {
 			if(f.getDestination().equals(destination)) {
 				flights.add(f);
 			}
@@ -53,9 +48,9 @@ public class FlightService {
 		return flights;
 	}
 	
-	public List<FlightDto> getIndirectFlightsByOrigin(String origin) {
-		List<FlightDto> flights = new ArrayList<>();
-		for(FlightDto f : getDailyFlightList()) {
+	public List<Flight> getIndirectFlightsByOrigin(String origin) {
+		List<Flight> flights = new ArrayList<>();
+		for(Flight f : getDailyFlightList()) {
 			if(f.getOrigin().equals(origin)) {
 				flights.add(f);
 			}
@@ -63,25 +58,25 @@ public class FlightService {
 		return flights;
 	}
 	
-	public List<List<FlightDto>> getAllRoutes(String origin, String destination) {
-		List<List<FlightDto>> allRoutes = new ArrayList<>();
-		for(FlightDto directFlight : getAllDirectFlights(origin, destination)) {
-			List<FlightDto> list = new ArrayList<>();
+	public List<List<Flight>> getAllRoutes(String origin, String destination) {
+		List<List<Flight>> allRoutes = new ArrayList<>();
+		for(Flight directFlight : getAllDirectFlights(origin, destination)) {
+			List<Flight> list = new ArrayList<>();
 			list.add(directFlight);
 			allRoutes.add(list);
 		}
-		for(FlightDto firstLeg : getIndirectFlightsByOrigin(origin)) {
-			for(FlightDto lastLeg : getIndirectFlightsByDestination(destination)) {
+		for(Flight firstLeg : getIndirectFlightsByOrigin(origin)) {
+			for(Flight lastLeg : getIndirectFlightsByDestination(destination)) {
 				if(firstLeg.getDestination().equals(lastLeg.getOrigin())) {
-					List<FlightDto> list = new ArrayList<>();
+					List<Flight> list = new ArrayList<>();
 					list.add(firstLeg);
 					if((firstLeg.getOffsetFromStart() + firstLeg.getFlightTime() + 0.5) < lastLeg.getOffsetFromStart()) {
 						list.add(lastLeg);
 						allRoutes.add(list);
 					}
 				} else {
-					for(FlightDto secondLeg : getAllDirectFlights(firstLeg.getDestination(), lastLeg.getOrigin())) {
-						List<FlightDto> list = new ArrayList<>();
+					for(Flight secondLeg : getAllDirectFlights(firstLeg.getDestination(), lastLeg.getOrigin())) {
+						List<Flight> list = new ArrayList<>();
 						list.add(firstLeg);
 						if((firstLeg.getOffsetFromStart() + firstLeg.getFlightTime() + 0.5) < secondLeg.getOffsetFromStart()) {
 							list.add(secondLeg);

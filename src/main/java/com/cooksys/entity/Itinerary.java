@@ -2,25 +2,30 @@ package com.cooksys.entity;
 
 import java.util.List;
 
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-
-import com.cooksys.pojo.Flight;
 
 
 @Entity
 public class Itinerary {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	
-	@ManyToMany
-	private List<Flight> flights;
+	@ElementCollection
+	private List<String> flightOrigins;
+	@ElementCollection
+	private List<String> flightDestinations;
+	@ElementCollection
+	private List<Long> flightDurations;
+	@ElementCollection
+	private List<Long> flightOffsets;
+	@ElementCollection
+	private List<Long> flightArrivalTimes;
 	
 	@ManyToOne
 	private Client client;
@@ -29,16 +34,44 @@ public class Itinerary {
 		return id;
 	}
 
-	public void setId(long id) {
-		this.id = id;
+	public List<String> getFlightOrigins() {
+		return flightOrigins;
 	}
 
-	public List<Flight> getFlights() {
-		return flights;
+	public void setFlightOrigins(List<String> flightOrigins) {
+		this.flightOrigins = flightOrigins;
 	}
 
-	public void setFlights(List<Flight> flights) {
-		this.flights = flights;
+	public List<String> getFlightDestinations() {
+		return flightDestinations;
+	}
+
+	public void setFlightDestinations(List<String> flightDestinations) {
+		this.flightDestinations = flightDestinations;
+	}
+
+	public List<Long> getFlightDurations() {
+		return flightDurations;
+	}
+
+	public void setFlightDurations(List<Long> flightDurations) {
+		this.flightDurations = flightDurations;
+	}
+
+	public List<Long> getFlightOffsets() {
+		return flightOffsets;
+	}
+
+	public void setFlightOffsets(List<Long> flightOffsets) {
+		this.flightOffsets = flightOffsets;
+	}
+
+	public List<Long> getFlightArrivalTimes() {
+		return flightArrivalTimes;
+	}
+
+	public void setFlightArrivalTimes(List<Long> flightArrivalTimes) {
+		this.flightArrivalTimes = flightArrivalTimes;
 	}
 
 	public Client getClient() {
@@ -49,10 +82,14 @@ public class Itinerary {
 		this.client = client;
 	}
 
-	public Itinerary(long id, List<Flight> flights, Client client) {
+	public Itinerary(List<String> flightOrigins, List<String> flightDestinations, List<Long> flightDurations,
+			List<Long> flightOffsets, List<Long> flightArrivalTimes, Client client) {
 		super();
-		this.id = id;
-		this.flights = flights;
+		this.flightOrigins = flightOrigins;
+		this.flightDestinations = flightDestinations;
+		this.flightDurations = flightDurations;
+		this.flightOffsets = flightOffsets;
+		this.flightArrivalTimes = flightArrivalTimes;
 		this.client = client;
 	}
 
